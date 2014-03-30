@@ -51,7 +51,7 @@
                                                 <i class="icon-user"></i> Welcome! <b class="caret"></b>
                                             </a>
                                             <ul class="dropdown-menu">                    
-                                                <li><a href="'.base_url("mdvd/logout").'"><i class="icon-table"></i> Database</a></li> 
+                                                <li><a href="'.base_url("mdvd/db_home").'"><i class="icon-table"></i> Database</a></li> 
                                             </ul>
                                         </li>
                                         <li><a href="'.base_url("mdvd/logout").'"><i class="icon-signout"></i> Sign Out</a></li>

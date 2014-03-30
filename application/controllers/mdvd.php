@@ -174,9 +174,9 @@ class Mdvd extends CI_Controller {
         $this->load->model('database');
         if($this->database->can_admin()) {
             $data['title'] = " | Admin";
-            $this->load->view('templates/header',$data);
+            $this->load->view('templates/dbheader',$data);
             $this->load->view('db/db_home_view');      
-            $this->load->view('templates/footer');
+            $this->load->view('templates/dbfooter');
         }
         else {
             redirect('mdvd/db_login');
@@ -189,9 +189,9 @@ class Mdvd extends CI_Controller {
         }
         else {
             $data['title'] = " | Admin Sign in";
-            $this->load->view('templates/header',$data);
+            $this->load->view('templates/dbheader',$data);
             $this->load->view('db/db_index_view');      
-            $this->load->view('templates/footer');
+            $this->load->view('templates/dbfooter');
         }
     }
     
@@ -226,9 +226,9 @@ class Mdvd extends CI_Controller {
 	
     public function db_movies() {
         $data['title'] = " | Admin Movies";
-        $this->load->view('templates/header',$data);
+        $this->load->view('templates/dbheader',$data);
         $this->load->view('db/db_movies_view');
-		$this->load->view('templates/footer');
+		$this->load->view('templates/dbfooter');
     }
     
 }
