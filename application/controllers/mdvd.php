@@ -66,8 +66,8 @@ class Mdvd extends CI_Controller {
     public function signup_validation() {
         $this->load->library('form_validation');
           
-        $this->form_validation->set_rules('username','User name','required|trim|is_unique[users.username]');
-        $this->form_validation->set_rules('email','Email address','required|valid_email|trim|is_unique[users.email]');
+        $this->form_validation->set_rules('username','User name','required|trim|is_unique[customer.cus_username]');
+        $this->form_validation->set_rules('email','Email address','required|valid_email|trim|is_unique[customer.cus_email]');
         $this->form_validation->set_rules('password','Password','required|trim');
         $this->form_validation->set_rules('cpassword','Confirm Password','required|trim|matches[password]');
         
