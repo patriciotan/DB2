@@ -49,16 +49,7 @@ class Mdvd extends CI_Controller {
             $this->form_validation->set_message('validate_credentials','Incorrect username/password!');
             return false;
         }
-    }
-    
-    public function reserve() {
-        if($this->session->userdata('logged_in')) {
-            
-        }
-        else {
-            redirect('mdvd/restricted');
-        }
-    }
+    } 
     
     public function signup() {
         if($this->session->userdata('logged_in')) {
@@ -95,7 +86,7 @@ class Mdvd extends CI_Controller {
         else {
             $this->signup();
         }
-    }
+    } 
     
     public function logout() {
         if($this->session->userdata('logged_in')) {
@@ -110,34 +101,91 @@ class Mdvd extends CI_Controller {
     public function success() {
         $data['title'] = " | Success";
         $this->load->view('templates/header',$data);
-        $this->load->view('pages/success_view');
+        $this->load->view('pages/success_view');           
+        $this->load->view('templates/footer');
     }
     
     public function problem() {
         $data['title'] = " | Problem";
         $this->load->view('templates/header',$data);
-        $this->load->view('pages/problem_view');
+        $this->load->view('pages/problem_view');           
+        $this->load->view('templates/footer');
     }
     
     public function room() {
-        $data['title'] = " | Room Rates";
-        $this->load->view('templates/header',$data);
-        $this->load->view('pages/rooms_view');      
-        $this->load->view('templates/footer');
+        if($this->session->userdata('logged_in')) { 
+            $data['title'] = " | Room Rates";
+            $data['reserved'] = false;
+            $this->load->view('templates/header',$data);
+            $this->load->view('pages/rooms_view',$data);      
+            $this->load->view('templates/footer');
+        }
+        else {
+            redirect('mdvd/restricted');
+        } 
+    }
+    
+    public function reserve_room() {   
+        $this->load->model('database');
+        if($this->database->reserve_room()) {
+            $data['reserved'] = true;
+        }
+        else {                            
+            $data['reserved'] = false;
+        }
+        if($this->session->userdata('logged_in')) {
+            $data['title'] = " | Movies";
+            $this->load->view('templates/header',$data);
+            $this->load->view('pages/rooms_view',$data);      
+            $this->load->view('templates/footer');
+        }
+        else {
+            redirect('mdvd/restricted');
+        } 
     }
     
     public function movies() {
-        $data['title'] = " | Movies";
-        $this->load->view('templates/header',$data);
-        $this->load->view('pages/movies_view');     
-
+        if($this->session->userdata('logged_in')) {
+            $data['title'] = " | Movies";
+            $data['reserved'] = false;
+            $this->load->view('templates/header',$data);
+            $this->load->view('pages/movies_view',$data);      
+            $this->load->view('templates/footer');
+        }
+        else {
+            redirect('mdvd/restricted');
+        } 
+    }
+    
+    public function reserve_movie() {   
+        $this->load->model('database');
+        if($this->database->reserve_movie()) {
+            $data['reserved'] = true;
+        }
+        else {                            
+            $data['reserved'] = false;
+        }
+        if($this->session->userdata('logged_in')) {
+            $data['title'] = " | Movies";
+            $this->load->view('templates/header',$data);
+            $this->load->view('pages/movies_view',$data);      
+            $this->load->view('templates/footer');
+        }
+        else {
+            redirect('mdvd/restricted');
+        } 
     }
     
     public function karaoke() {
-        $data['title'] = " | Karaoke";
-        $this->load->view('templates/header',$data);
-        $this->load->view('pages/karaoke_view');      
-        $this->load->view('templates/footer');
+        if($this->session->userdata('logged_in')) {
+            $data['title'] = " | Karaoke";
+            $this->load->view('templates/header',$data);
+            $this->load->view('pages/karaoke_view');      
+            $this->load->view('templates/footer');
+        }
+        else {
+            redirect('mdvd/restricted');
+        } 
     }
     
     public function about() {
@@ -157,13 +205,15 @@ class Mdvd extends CI_Controller {
     public function view404() {
         $data['title'] = " | 404";
         $this->load->view('templates/header',$data);
-        $this->load->view('pages/404_view');
+        $this->load->view('pages/404_view');            
+        $this->load->view('templates/footer');
     }
     
     public function restricted() {
         $data['title'] = " | Restricted";
         $this->load->view('templates/header',$data);
-        $this->load->view('pages/restricted_view');
+        $this->load->view('pages/restricted_view');            
+        $this->load->view('templates/footer');
     }
     
 	/**************************************************************************

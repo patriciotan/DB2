@@ -65,8 +65,18 @@
                             <div class="thumbnail"><!--thumbnail--->
                                   <img src="../bootstrap/img/movies/hangover.jpg" style="width:170px; height:250px;">
                                       <div class="caption">
-                                        <h4>Hangover 3</h4>                                              
-                                            <a href="#" class="btn btn-default" style="width:80px;">Reserve</a></p>
+                                        <h4>Hangover 3</h4>                                                           
+                                            <form action="<?php echo base_url('mdvd/reserve_movie'); ?>" method="post">   
+                                                <input type="hidden" name="title" value="Hangover 3">
+                                                <?php  
+                                                    if($reserved) {
+                                                        echo "<button class='btn btn-success disabled' type='submit'>Reserve</button>";
+                                                    }
+                                                    else {
+                                                        echo "<button class='btn btn-success' type='submit'>Reserve</button>";
+                                                    }
+                                                ?>
+                                            </form>
                                       </div>
     						</div><!---thumbnail--->
   						</div><!---end--->
@@ -75,9 +85,19 @@
     						<div class="thumbnail"><!--thumbnail--->
       							<img src="../bootstrap/img/movies/manoftaichi.jpg" style="width:170px; height:250px;">
       								<div class="caption">
-        								<h4>Man of Taichi</h4>                                                  
-                                            <a href="#" class="btn btn-default" style="width:80px;">Reserve</a></p>
-      								</div>
+        								<h4>Man of Taichi</h4>                                                 
+                                            <form action="<?php echo base_url('mdvd/reserve_movie'); ?>" method="post">   
+                                                <input type="hidden" name="title" value="Man of Taichi">
+                                                <?php
+                                                    if($reserved) {
+                                                        echo "<button class='btn btn-success disabled' type='submit'>Reserve</button>";
+                                                    }
+                                                    else {
+                                                        echo "<button class='btn btn-success' type='submit'>Reserve</button>";
+                                                    }
+                                                ?>
+                                            </form>
+                                      </div>
     						</div><!---thumbnail--->
   						</div><!---end--->
                         
@@ -86,9 +106,19 @@
     						<div class="thumbnail"><!--thumbnail--->
       							<img src="../bootstrap/img/movies/ironman3.jpg" style="width:170px; height:250px;">
       								<div class="caption">
-        								<h4>Iron Man 3</h4>                                                   
-                                            <a href="#" class="btn btn-default" style="width:80px;">Reserve</a></p>
-      								</div>
+        								<h4>Ironman 3</h4>                                                          
+                                            <form action="<?php echo base_url('mdvd/reserve_movie'); ?>" method="post">   
+                                                <input type="hidden" name="title" value="Ironman 3">
+                                                <?php
+                                                    if($reserved) {
+                                                        echo "<button class='btn btn-success disabled' type='submit'>Reserve</button>";
+                                                    }
+                                                    else {
+                                                        echo "<button class='btn btn-success' type='submit'>Reserve</button>";
+                                                    }
+                                                ?>
+                                            </form>
+                                      </div>
     						</div><!---thumbnail--->
   						</div><!---end--->
                         
@@ -96,9 +126,19 @@
     						<div class="thumbnail"><!--thumbnail--->
       							<img src="../bootstrap/img/movies/smurfs.jpg" style="width:170px; height:250px;">
       								<div class="caption">
-        								<h4>The Smurfs</h4>                                                   
-                                            <a href="#" class="btn btn-default" style="width:80px;">Reserve</a></p>
-      								</div>
+        								<h4>The Smurfs</h4>                                                             
+                                            <form action="<?php echo base_url('mdvd/reserve_movie'); ?>" method="post">   
+                                                <input type="hidden" name="title" value="The Smurfs">
+                                                <?php
+                                                    if($reserved) {
+                                                        echo "<button class='btn btn-success disabled' type='submit'>Reserve</button>";
+                                                    }
+                                                    else {
+                                                        echo "<button class='btn btn-success' type='submit'>Reserve</button>";
+                                                    }
+                                                ?>
+                                            </form>
+                                      </div>
     						</div><!---thumbnail--->
   						</div><!---end--->
 					</div><!---end of first row---></p>
@@ -108,9 +148,19 @@
     						<div class="thumbnail"><!--thumbnail--->
       							<img src="../bootstrap/img/movies/gijoe.jpg" style="width:170px; height:250px;">
       								<div class="caption">
-        								<h4>G.I. Joe Retaliation</h4>                                       
-                                            <a href="#" class="btn btn-default" style="width:80px;">Reserve</a></p>
-      								</div>
+        								<h4>G.I. Joe Retaliation</h4>                                                            
+                                            <form action="<?php echo base_url('mdvd/reserve_movie'); ?>" method="post">   
+                                                <input type="hidden" name="title" value="G.I. Joe Retaliation">
+                                                <?php
+                                                    if($reserved) {
+                                                        echo "<button class='btn btn-success disabled' type='submit'>Reserve</button>";
+                                                    }
+                                                    else {
+                                                        echo "<button class='btn btn-success' type='submit'>Reserve</button>";
+                                                    }
+                                                ?>
+                                            </form>
+                                      </div>
     						</div><!---thumbnail--->
   						</div><!---end--->
                         
@@ -118,9 +168,19 @@
     						<div class="thumbnail"><!--thumbnail--->
       							<img src="../bootstrap/img/movies/worldwarz.jpg" style="width:170px; height:250px;">
       								<div class="caption">
-        								<h4>World War Z</h4>                                                 
-                                            <a href="#" class="btn btn-default" style="width:80px;">Reserve</a></p>
-      								</div>
+        								<h4>World War Z</h4>                                                                   
+                                            <form action="<?php echo base_url('mdvd/reserve_movie'); ?>" method="post">   
+                                                <input type="hidden" name="title" value="World War Z">
+                                                <?php
+                                                    if($reserved) {
+                                                        echo "<button class='btn btn-success disabled' type='submit'>Reserve</button>";
+                                                    }
+                                                    else {
+                                                        echo "<button class='btn btn-success' type='submit'>Reserve</button>";
+                                                    }
+                                                ?>
+                                            </form>
+                                      </div>
     						</div><!---thumbnail--->
   						</div><!---end--->
                         
@@ -129,9 +189,19 @@
     						<div class="thumbnail"><!--thumbnail--->
       							<img src="../bootstrap/img/movies/afterearth.jpg" style="width:170px; height:250px;">
       								<div class="caption">
-        								<h4>After Earth</h4>                                                  
-                                            <a href="#" class="btn btn-default" style="width:80px;">Reserve</a></p>
-      								</div>
+        								<h4>After Earth</h4>                                                                  
+                                            <form action="<?php echo base_url('mdvd/reserve_movie'); ?>" method="post">   
+                                                <input type="hidden" name="title" value="After Earth">
+                                                <?php
+                                                    if($reserved) {
+                                                        echo "<button class='btn btn-success disabled' type='submit'>Reserve</button>";
+                                                    }
+                                                    else {
+                                                        echo "<button class='btn btn-success' type='submit'>Reserve</button>";
+                                                    }
+                                                ?>
+                                            </form>
+                                      </div>
     						</div><!---thumbnail--->
   						</div><!---end--->
                         
@@ -139,9 +209,19 @@
     						<div class="thumbnail"><!--thumbnail--->
       							<img src="../bootstrap/img/movies/thisistheend.jpg" style="width:170px; height:250px;">
       								<div class="caption">
-        								<h4>This Is The End</h4>                                             
-                                            <a href="#" class="btn btn-default" style="width:80px;">Reserve</a></p>
-      								</div>
+        								<h4>This is the End</h4>                                                                   
+                                            <form action="<?php echo base_url('mdvd/reserve_movie'); ?>" method="post">   
+                                                <input type="hidden" name="title" value="This is the End">
+                                                <?php
+                                                    if($reserved) {
+                                                        echo "<button class='btn btn-success disabled' type='submit'>Reserve</button>";
+                                                    }
+                                                    else {
+                                                        echo "<button class='btn btn-success' type='submit'>Reserve</button>";
+                                                    }
+                                                ?>
+                                            </form>
+                                      </div>
     						</div><!---thumbnail--->
   						</div><!---end--->
 					</div><!---end of second row---></p>

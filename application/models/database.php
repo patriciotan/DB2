@@ -91,9 +91,7 @@ class Database extends CI_Model {
         'm_genre' => $this->input->post('genre'),
         'm_status' => Available
         );
-        $query = $this->db->insert('movie',$data);
-
-        if($query) {
+        if($query = $this->db->insert('movie',$data)) {
             return true;
         }
         else {
@@ -102,14 +100,68 @@ class Database extends CI_Model {
         
     }
     
+    public function reserve_movie() {
+        if($this->is_movie_reserved()) {
+            return false;
+        }
+        else {
+            $data = array(
+            'm_status' => Reserved
+            );
+            $this->db->where('m_title',$this->input->post('title'));   
+            $query = $this->db->update('movie',$data);
+            if($query) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    }
+    
+    public function reserve_room() { 
+        if($this->is_room_reserved()) {
+            return false;
+        }
+        else {
+            $data = array(
+            'rm_status' => Reserved
+            );
+            $this->db->where('rm_no',$this->input->post('rmno'));   
+            $query = $this->db->update('room',$data);
+            if($query) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    }
+    
+    public function is_movie_reserved() {
+        if($query = $this->db->get_where('movie',array('m_status' => 'Reserved'))) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    
+    public function is_room_reserved() {
+        if($query = $this->db->get_where('room',array('rm_status' => 'Reserved'))) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    
     public function free_movie() {
         $data = array(
                'm_status' => Available
             );  
-        $this->db->where('m_id',$this->input->post('avail'));
-        $query = $this->db->update('movie',$data);
-
-        if($query) {
+        $this->db->where('m_id',$this->input->post('avail')); 
+        if($query = $this->db->update('movie',$data)) {
             return true;
         }
         else {
@@ -122,9 +174,7 @@ class Database extends CI_Model {
                'rm_status' => Available
             );  
         $this->db->where('rm_no',$this->input->post('avail'));
-        $query = $this->db->update('room',$data);
-
-        if($query) {
+        if($query = $this->db->update('room',$data)) {
             return true;
         }
         else {
