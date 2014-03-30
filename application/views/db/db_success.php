@@ -17,8 +17,7 @@
         </div>
         
         <div class="span12 _404Home">
-            <h4>Go back <a href="<?php echo base_url(); ?>"> <i class="icon-home"></i> </a> or 
-                <a href="<?php echo base_url('mdvd/contact'); ?>"> Say something. </a> </h4>
+            <h4>Go back <a href="<?php echo base_url('mdvd/hashtagadmin'); ?>"> <i class="icon-home"></i> </a>
         </div>
         
         

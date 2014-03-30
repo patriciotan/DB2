@@ -7,10 +7,25 @@
                 <div class="title">Create an account</div>
                 
                 <form action="<?php echo base_url('mdvd/signup_validation'); ?>" method="post">
+                    
                     <div class="control-group">
                         <div class="controls">
-                            <label>User name</label>
-                            <input type="text" maxlength="15" name="username" placeholder="Enter your user name here..."/>
+                            <label>Contact</label>
+                            <input type="text" maxlength="50" name="contact" placeholder="Enter your contact number here..."/>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <div class="controls">
+                            <label>First name</label>
+                            <input type="text" maxlength="50" name="fname" placeholder="Enter your first name here..."/>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <div class="controls">
+                            <label>Last name</label>
+                            <input type="text" maxlength="50" name="lname" placeholder="Enter your last name here..."/>
                         </div>
                     </div>
                     
@@ -18,6 +33,13 @@
                         <div class="controls">
                             <label>Email address</label>
                             <input type="email" maxlength="50" name="email" placeholder="Enter your email address here..."/>
+                        </div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <div class="controls">
+                            <label>User name</label>
+                            <input type="text" maxlength="15" name="username" placeholder="Enter your user name here..."/>
                         </div>
                     </div>
                     

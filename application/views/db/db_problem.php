@@ -4,7 +4,7 @@
     <div class="row">
         <div class="span12 _404Heading">
             
-            <h2>Congratulations!</h2>
+            <h2>Sorry!</h2>
             
         </div> <!-- end of span12 tag-->
         
@@ -13,12 +13,11 @@
         </div>
         
         <div class="span12 _404Error">
-            It was a success. <i class="icon-bolt"></i>
+            A problem occured. <i class="icon-bolt"></i>
         </div>
         
         <div class="span12 _404Home">
-            <h4>Go back <a href="<?php echo base_url(); ?>"> <i class="icon-home"></i> </a> or 
-                <a href="<?php echo base_url('mdvd/contact'); ?>"> Say something. </a> </h4>
+            <h4>Go back <a href="<?php echo base_url('mdvd/hashtagadmin'); ?>"> <i class="icon-home"></i> </a>
         </div>
         
         

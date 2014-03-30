@@ -4,21 +4,25 @@
     <div class="row">
         <div class="span12 _404Heading">
             
-            <h2>Congratulations!</h2>
+            <p><h2>You cannot visit this page!</h2>
+                <h2>You may not be logged in</h2>
+                <h2>or you are not permitted.</h2>
+            </p>
             
         </div> <!-- end of span12 tag-->
         
+        
+        
         <div class="span12 _404Link">
-            <i class="icon-link"></i>
+            <br/><i class="icon-link"></i>
         </div>
         
         <div class="span12 _404Error">
-            It was a success. <i class="icon-bolt"></i>
+            Restricted Page <i class="icon-bolt"></i>
         </div>
         
         <div class="span12 _404Home">
-            <h4>Go back <a href="<?php echo base_url(); ?>"> <i class="icon-home"></i> </a> or 
-                <a href="<?php echo base_url('mdvd/contact'); ?>"> Say something. </a> </h4>
+            <h4>Go back <a href="<?php echo base_url('mdvd/hashtagadmin'); ?>"> <i class="icon-home"></i> </a>
         </div>
         
         

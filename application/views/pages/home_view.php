@@ -45,14 +45,7 @@
                             <?php
                                 if($this->session->userdata('logged_in')) {
                                     echo '<ul class="nav pull-right">
-                                        <li class="dropdown">
-                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                                <i class="icon-user"></i> Welcome! <b class="caret"></b>
-                                            </a>
-                                            <ul class="dropdown-menu">                    
-                                                <li><a href="'.base_url("mdvd/logout").'"><i class="icon-table"></i> Database</a></li> 
-                                            </ul>
-                                        </li>
+                                        <li><a href=""><i class="icon-user"></i> Welcome!</a></li>
                                         <li><a href="'.base_url("mdvd/logout").'"><i class="icon-signout"></i> Sign Out</a></li>
                                     </ul>';
                                 }

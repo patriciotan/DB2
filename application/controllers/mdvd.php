@@ -151,7 +151,7 @@ class Mdvd extends CI_Controller {
         $data['title'] = " | Contact";
         $this->load->view('templates/header',$data);
         $this->load->view('pages/contact_view');           
-        $this->load->view('templates/footer');
+        $this->load->view('templates/footer'); 
     }
     
     public function view404() {
@@ -170,12 +170,12 @@ class Mdvd extends CI_Controller {
                                   ADMIN SIDE 
     ***************************************************************************/
      
-    public function db_home() {
+    public function hashtagadmin() {
         $this->load->model('database');
-        if($this->database->can_admin()) {
+        if($this->session->userdata('logged_in')) {
             $data['title'] = " | Admin";
             $this->load->view('templates/dbheader',$data);
-            $this->load->view('db/db_home_view');      
+            $this->load->view('db/db_home_view');
             $this->load->view('templates/dbfooter');
         }
         else {
@@ -183,16 +183,26 @@ class Mdvd extends CI_Controller {
         }
     }
     
-    public function db_login() {
+    public function db_login() {     
         if($this->session->userdata('logged_in')) {
             redirect('mdvd/restricted');
         }
         else {
             $data['title'] = " | Admin Sign in";
             $this->load->view('templates/dbheader',$data);
-            $this->load->view('db/db_index_view');      
+            $this->load->view('db/db_login_view');
             $this->load->view('templates/dbfooter');
         }
+    }
+    
+    public function db_logout() {
+        if($this->session->userdata('logged_in')) {
+            $this->session->sess_destroy();
+            redirect('mdvd/db_login');
+        }
+        else {
+            redirect('mdvd/restricted');
+        } 
     }
     
     public function db_login_validation() {
@@ -206,7 +216,7 @@ class Mdvd extends CI_Controller {
                 'logged_in' => true
             );
             $this->session->set_userdata($data);
-            redirect('mdvd/db_home');
+            redirect('mdvd/hashtagadmin');
         }
         else {
             $this->db_login();
@@ -223,12 +233,146 @@ class Mdvd extends CI_Controller {
             return false;
         }
     }
+    
+    public function db_customers() {
+        $data['title'] = " | Admin Customers";
+        $this->load->model('database');
+        $data['query'] = $this->database->display_customer();
+        $this->load->view('templates/dbheader',$data);
+        $this->load->view('db/db_customers_view',$data);
+        $this->load->view('templates/dbfooter');
+    }
+    
+    public function db_employees() {
+        $data['title'] = " | Admin Employees";
+        $this->load->model('database');
+        $data['query'] = $this->database->display_employee();
+        $this->load->view('templates/dbheader',$data);
+        $this->load->view('db/db_employees_view',$data);
+        $this->load->view('templates/dbfooter');  
+    }
+    
+    public function insert_emp() {
+        $this->load->library('form_validation');
+          
+        $this->form_validation->set_rules('contact','Contact number','required|trim|is_unique[employee.emp_contact]');
+        $this->form_validation->set_rules('email','Email address','required|valid_email|trim|is_unique[employee.emp_email]');
+        $this->form_validation->set_rules('username','User name','required|trim|is_unique[employee.emp_username]');
+        $this->form_validation->set_rules('password','Password','required|trim');
+        $this->form_validation->set_rules('fname','First name','required|trim');
+        $this->form_validation->set_rules('lname','Last name','required|trim');
+        
+        $this->form_validation->set_message('is_unique','%s already exists, choose another!'); 
+        
+        if($this->form_validation->run()) {
+            $this->load->model('database');
+            if($this->database->insert_emp()) {
+                redirect('mdvd/db_success');
+            }
+            else {
+                redirect('mdvd/db_problem');
+            }
+        }
+        else {
+            $this->db_employees();
+        }
+    } 
 	
     public function db_movies() {
         $data['title'] = " | Admin Movies";
+        $this->load->model('database');
+        $data['query'] = $this->database->display_movie();
         $this->load->view('templates/dbheader',$data);
-        $this->load->view('db/db_movies_view');
-		$this->load->view('templates/dbfooter');
+        $this->load->view('db/db_movies_view',$data);
+        $this->load->view('templates/dbfooter');     
     }
+    
+    public function insert_movie() {
+        $this->load->library('form_validation');
+          
+        $this->form_validation->set_rules('title','Title','required|trim|is_unique[movie.m_title]');
+        $this->form_validation->set_rules('genre','Genre','required');
+        
+        $this->form_validation->set_message('is_unique','%s already exists, choose another!'); 
+        
+        if($this->form_validation->run()) {
+            $this->load->model('database'); 
+            if($this->database->insert_movie()) {
+                redirect('mdvd/db_success');
+            }
+            else {
+                redirect('mdvd/db_problem');
+            }
+        }
+        else {
+            $this->db_employees();
+        }
+    }
+    
+    public function free_movie() {
+        $this->load->model('database'); 
+            if($this->database->free_movie()) {
+                redirect('mdvd/db_success');
+            }
+            else {
+                redirect('mdvd/db_problem');
+            }
+    }  
+    
+    public function free_room() {
+        $this->load->model('database'); 
+            if($this->database->free_room()) {
+                redirect('mdvd/db_success');
+            }
+            else {
+                redirect('mdvd/db_problem');
+            }
+    } 
+    
+    public function db_transactions() {
+        $data['title'] = " | Admin Transactions";
+        $this->load->model('database');
+        $data['query'] = $this->database->display_transaction();
+        $this->load->view('templates/dbheader',$data);
+        $this->load->view('db/db_transactions_view',$data); 
+        $this->load->view('templates/dbfooter');  
+    }      
+    
+    public function db_rooms() {
+        $data['title'] = " | Admin Rooms";
+        $this->load->model('database');
+        $data['query'] = $this->database->display_room();
+        $this->load->view('templates/dbheader',$data);
+        $this->load->view('db/db_rooms_view',$data); 
+        $this->load->view('templates/dbfooter');  
+    }
+    
+    public function db_view404() {
+        $data['title'] = " | 404";
+        $this->load->view('templates/dbheader',$data);
+        $this->load->view('db/db_404');  
+        $this->load->view('templates/dbfooter');  
+    }
+    
+    public function db_restricted() {
+        $data['title'] = " | Restricted";
+        $this->load->view('templates/dbheader',$data);
+        $this->load->view('db/db_restricted');  
+        $this->load->view('templates/dbfooter');  
+    }
+    
+    public function db_success() {
+        $data['title'] = " | Success";
+        $this->load->view('templates/dbheader',$data);
+        $this->load->view('db/db_success'); 
+        $this->load->view('templates/dbfooter');  
+    }
+    
+    public function db_problem() {
+        $data['title'] = " | Problem";
+        $this->load->view('templates/dbheader',$data);
+        $this->load->view('db/db_problem');  
+        $this->load->view('templates/dbfooter');  
+    } 
     
 }

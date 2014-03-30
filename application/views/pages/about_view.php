@@ -5,7 +5,7 @@
     <div class="row">
         <div class="span12">
             <h3>About Us</h3> <hr/>
-            <center> <img src="img/office.jpg" class="img-polaroid"/> </center> <hr/>
+            <center> <img src="../bootstrap/img/mdvd/cropped1.jpg" class="img-circle"/> </center> <hr/>
             
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.

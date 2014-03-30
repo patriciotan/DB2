@@ -1,61 +1,51 @@
-<?php 
-	$result = $this->db->get('movie');
-?>
-
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Movies</title>
-
-	<link href="css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link rel="icon" type="image/ico" href="img/favicon.png"/>
-    <script src="js/bootstrap.min.js" type="text/javascript"> </script>
-    <script src="js/jquery.js" type="text/javascript"> </script>
-    <script src="js/jquery.dataTables.js" type="text/javascript"> </script>
-    
-</head>
-
-<body>
-
-<div class="span12">
-	<h1 class="span8">M DVD Cafe</h1>&nbsp;
-	<p>
-    	<a href="admin_home.php" style="float: right;">Go back</a><br>
-        <a href="admin_logout.php" style="float: right;">Sign out</a>
-    </p>
-	<h3 class="span8">Table: movies</h3>
-    &nbsp;
-    
-    <form class="form-search offset1">
-    	<input type="text" style="width:400px" name="name" class="input-medium search-query" placeholder="Name">
-        <input type="text" style="width:150px" name="genre" class="input-medium search-query" placeholder="Genre">
-        <input type="text" style="width:150px" name="time" class="input-medium search-query" size="20" placeholder="Time (minutes)">
-    	<button type="submit" class="btn btn-success" formaction="admin_insertmovie.php" formmethod="post" id="insert">Add to database</button></p>
-    </form>
-    <table class="table table-bordered table-hover span10">
-		<thead>
-            <th>Name</th>
+<div class="row span12">
+    <br/><br/>
+    <h1 style="text-align: center" class="span8 offset2">Movies <i class="icon-table"></i></h1>  
+</div> 
+      
+<div class="span12">    
+    <table class="table table-bordered span12">
+        <thead>
+            <th>Movie ID</th>
+            <th>Title</th>
             <th>Genre</th>
-            <th>Running Time (minutes)</th>
-            <th>Status</th>
+            <th>Status</th>  
+            <th>Status Action</th>  
         </thead>
         <tbody>
-        	<?php
-				while($row = $result->result_array()) {
-					echo "<tr>"
-						 ."<td>".$row->title."</td>"
-						 ."<td>".$row->genre."</td>"
-						 ."<td>".$row->runtime."</td>"
-						 ."<td>".$row->status."</td>"
-						 ."</tr>";
-				}
-			?>
+            <?php
+                foreach ($query->result() as $row) {
+                    echo "<tr>"
+                         ."<td>".$row->m_id."</td>"
+                         ."<td>".$row->m_title."</td>"
+                         ."<td>".$row->m_genre."</td>"
+                         ."<td>".$row->m_status."</td>"
+                         .'<td>
+                            <form action="'.base_url("mdvd/free_movie").'" method="post">   
+                                <input type="hidden" name="avail" value='.$row->m_id.'>
+                                <button class="btn btn-inverse" type="submit">Make available</button>
+                            </form>
+                         </td>'
+                    ."</tr>";
+                }
+            ?>
         </tbody>
     </table>
-</div>
+</div> 
 
-</body>
-</html>
+<div class="span12 offset2">
+    <form action="<?php echo base_url('mdvd/insert_movie'); ?>" method="post">
+        <input type="text" style="width:500px" name="title" class="input-medium search-query" placeholder="Title">
+        <select name="genre">
+            <option value="Action">Action</option>
+            <option value="Animation">Animation</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Horror">Horror</option>
+            <option value="Drama">Drama</option>
+        </select>                          
+        <button type="submit" class="btn btn-inverse" name="insertmov">Add</button></p>
+    </form>
+    <br/>
+    <?php echo validation_errors(); ?>
+</div>  

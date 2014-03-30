@@ -28,32 +28,25 @@
                         <div class="navbar-inner">
                             <a class="brand" href="">Mdvd Cafe <i class="icon-facetime-video"></i></a>
                              <ul class="nav navbar">
-                                <li><a href="<?php echo base_url(); ?>"><i class="icon-home"></i> Home</a></li>
-                                <li><a href="<?php echo base_url('mdvd/room'); ?>"><i class="icon-table"></i> Room Rates</a></li>
+                                <li><a href="<?php echo base_url('mdvd/hashtagadmin'); ?>"><i class="icon-home"></i> Home</a></li>
                                 <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                        <i class="icon-list-ul"></i> Services <b class="caret"></b>
+                                        <i class="icon-list-ul"></i> Users <b class="caret"></b>
                                     </a>
                                     <ul class="dropdown-menu">                    
-                                        <li><a href="<?php echo base_url('mdvd/movies'); ?>"><i class="icon-film"></i> Movies</a></li>
-                                        <li><a href="<?php echo base_url('mdvd/karaoke'); ?>"><i class="icon-music"></i> Karaoke</a></li> 
+                                        <li><a href="<?php echo base_url('mdvd/db_customers'); ?>"><i class="icon-table"></i> Customers</a></li> 
+                                        <li><a href="<?php echo base_url('mdvd/db_employees'); ?>"><i class="icon-table"></i> Employees</a></li> 
                                     </ul>
                                 </li>  
-                                <li><a href="<?php echo base_url('mdvd/about'); ?>"><i class="icon-list-alt"></i> About</a></li>
-                                <li><a href="<?php echo base_url('mdvd/contact'); ?>"><i class="icon-phone"></i> Contact</a></li> 
+                                <li><a href="<?php echo base_url('mdvd/db_movies'); ?>"><i class="icon-table"></i> Movies</a></li> 
+                                <li><a href="<?php echo base_url('mdvd/db_transactions'); ?>"><i class="icon-table"></i> Transactions</a></li> 
+                                <li><a href="<?php echo base_url('mdvd/db_rooms'); ?>"><i class="icon-table"></i> Rooms</a></li> 
                             </ul>
                             
                             <?php
                                 if($this->session->userdata('logged_in')) {
                                     echo '<ul class="nav pull-right">
-                                        <li class="dropdown">
-                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                                <i class="icon-user"></i> Welcome! <b class="caret"></b>
-                                            </a>
-                                            <ul class="dropdown-menu">                    
-                                                <li><a href="'.base_url("mdvd/db_home").'"><i class="icon-table"></i> Database</a></li> 
-                                            </ul>
-                                        </li>
+                                        <li><a href=""><i class="icon-user"></i> Admin!</a></li>
                                         <li><a href="'.base_url("mdvd/logout").'"><i class="icon-signout"></i> Sign Out</a></li>
                                     </ul>';
                                 }
