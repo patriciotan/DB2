@@ -204,6 +204,12 @@ input[type = text],input[type = password],input[type = email] {
 	margin-bottom: 80px;
 }
 
+.table th{
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+
 .table tr td{
 	text-align: center;
 	padding-top: 15px;
